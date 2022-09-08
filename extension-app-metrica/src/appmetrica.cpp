@@ -50,7 +50,7 @@ static void LuaInit(lua_State* L)
     lua_pushnumber(L, (lua_Number) name); \
     lua_setfield(L, -2, #name); \
 
-    SETCONSTANT(EVENT_CLOSED)
+    SETCONSTANT(EVENT_ONE)
     SETCONSTANT(EVENT_NOT_SUPPORTED)
 
     #undef SETCONSTANT

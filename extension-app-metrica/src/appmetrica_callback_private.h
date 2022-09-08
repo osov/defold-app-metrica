@@ -11,12 +11,13 @@ namespace dmAppMetrica {
 
 enum MessageId
 {
-    MSG_INTERSTITIAL =              1
+    MSG_TYPE_1 = 1
 };
 
 enum MessageEvent
 {
-    EVENT_CLOSED =                  1
+	EVENT_NOT_SUPPORTED = 100
+    EVENT_ONE = 1
 };
 
 struct CallbackData

@@ -2,7 +2,7 @@
 
 #include <dmsdk/dlib/android.h>
 #include "appmetrica_private.h"
-#include "com_appmetrica_JNI.h"
+#include "com_defold_appmetrica_AppMetricaJNI.h"
 #include "appmetrica_callback_private.h"
 
 JNIEXPORT void JNICALL Java_com_defold_appmetrica_AppMetricaJNI_AddToQueue(JNIEnv * env, jclass cls, jint jmsg, jstring jjson)
