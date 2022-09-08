@@ -21,8 +21,9 @@ public class AppMetricaJNI {
 
   private static final String TAG = "AppMetricaJNI";
   public static native void AddToQueue(int msg, String json);
-
+  private static final int EVENT_JSON_ERROR = 101;
   private Activity activity;
+
 
   public AppMetricaJNI(Activity activity) {
     this.activity = activity;
