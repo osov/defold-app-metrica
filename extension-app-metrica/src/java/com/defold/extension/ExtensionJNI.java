@@ -1,4 +1,4 @@
-package com.defold.appmetrica;
+package com.defold.extension;
 
 import androidx.annotation.NonNull;
 import android.util.Log;
@@ -17,15 +17,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
 
-public class AppMetricaJNI {
+public class ExtensionJNI {
 
-  private static final String TAG = "AppMetricaJNI";
+  private static final String TAG = "ExtensionJNI";
   public static native void AddToQueue(int msg, String json);
   private static final int EVENT_JSON_ERROR = 101;
   private Activity activity;
 
 
-  public AppMetricaJNI(Activity activity) {
+  public ExtensionJNI(Activity activity) {
     this.activity = activity;
   }
 

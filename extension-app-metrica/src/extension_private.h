@@ -2,7 +2,7 @@
 
 #pragma once
 
-namespace dmAppMetrica {
+namespace dmApp {
 
 void Initialize_Ext();
 
@@ -11,6 +11,6 @@ void Initialize(const char* unitId);
 void ActivateApp();
 
 
-} //namespace dmAppMetrica
+} //namespace dmApp
 
 #endif

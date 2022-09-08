@@ -1,10 +1,10 @@
 #if defined(DM_PLATFORM_ANDROID) 
 
-#include "appmetrica_callback_private.h"
+#include "extension_callback_private.h"
 #include "utils/LuaUtils.h"
 #include <stdlib.h>
 
-namespace dmAppMetrica {
+namespace dmApp {
 
 static dmScript::LuaCallbackInfo* m_luaCallback = 0x0;
 static dmArray<CallbackData> m_callbacksQueue;
@@ -23,7 +23,7 @@ static void InvokeCallback(MessageId type, const char*json)
 {
     if (!dmScript::IsCallbackValid(m_luaCallback))
     {
-        dmLogError("AppMetrica callback is invalid. Set new callback unsing `appmetrica.setCallback()` funciton.");
+        dmLogError("App callback is invalid. Set new callback unsing `extension.setCallback()` funciton.");
         return;
     }
 

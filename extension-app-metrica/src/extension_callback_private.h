@@ -1,12 +1,12 @@
 #if defined(DM_PLATFORM_ANDROID)
 #pragma once
 
-#include "appmetrica_private.h"
+#include "extension_private.h"
 #include <dmsdk/sdk.h>
 
-namespace dmAppMetrica {
+namespace dmApp {
 
-// The same events and messages are in AppMetricaJNI.java
+// The same events and messages are in ExtensionJNI.java
 // If you change enums here, pls nake sure you update the constants there as well
 
 enum MessageId

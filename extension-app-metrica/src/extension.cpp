@@ -7,11 +7,11 @@
 
 #if defined(DM_PLATFORM_ANDROID)
 
-#include "appmetrica_private.h"
-#include "appmetrica_callback_private.h"
+#include "extension_private.h"
+#include "extension_callback_private.h"
 #include "utils/LuaUtils.h"
 
-namespace dmAppMetrica {
+namespace dmApp {
 
 static int Lua_Initialize(lua_State* L)
 {
@@ -58,12 +58,12 @@ static void LuaInit(lua_State* L)
     lua_pop(L, 1);
 }
 
-static dmExtension::Result AppInitializeAppMetrica(dmExtension::AppParams* params)
+static dmExtension::Result AppInitializeApp(dmExtension::AppParams* params)
 {
     return dmExtension::RESULT_OK;
 }
 
-static dmExtension::Result InitializeAppMetrica(dmExtension::Params* params)
+static dmExtension::Result InitializeApp(dmExtension::Params* params)
 {
     LuaInit(params->m_L);
     Initialize_Ext();
@@ -71,24 +71,24 @@ static dmExtension::Result InitializeAppMetrica(dmExtension::Params* params)
     return dmExtension::RESULT_OK;
 }
 
-static dmExtension::Result AppFinalizeAppMetrica(dmExtension::AppParams* params)
+static dmExtension::Result AppFinalizeApp(dmExtension::AppParams* params)
 {
     return dmExtension::RESULT_OK;
 }
 
-static dmExtension::Result FinalizeAppMetrica(dmExtension::Params* params)
+static dmExtension::Result FinalizeApp(dmExtension::Params* params)
 {
     FinalizeCallback();
     return dmExtension::RESULT_OK;
 }
 
-static dmExtension::Result UpdateAppMetrica(dmExtension::Params* params)
+static dmExtension::Result UpdateApp(dmExtension::Params* params)
 {
     UpdateCallback();
     return dmExtension::RESULT_OK;
 }
 
-static void OnEventAppMetrica(dmExtension::Params* params, const dmExtension::Event* event)
+static void OnEventApp(dmExtension::Params* params, const dmExtension::Event* event)
  {
     switch(event->m_Event)
     {
@@ -98,23 +98,23 @@ static void OnEventAppMetrica(dmExtension::Params* params, const dmExtension::Ev
     }
  }
 
-} //namespace dmAppMetrica
+} //namespace dmApp
 
-DM_DECLARE_EXTENSION(EXTENSION_NAME, LIB_NAME, dmAppMetrica::AppInitializeAppMetrica, dmAppMetrica::AppFinalizeAppMetrica, dmAppMetrica::InitializeAppMetrica, dmAppMetrica::UpdateAppMetrica, dmAppMetrica::OnEventAppMetrica, dmAppMetrica::FinalizeAppMetrica)
+DM_DECLARE_EXTENSION(EXTENSION_NAME, LIB_NAME, dmApp::AppInitializeApp, dmApp::AppFinalizeApp, dmApp::InitializeApp, dmApp::UpdateApp, dmApp::OnEventApp, dmApp::FinalizeApp)
 
 #else
 
-static  dmExtension::Result InitializeAppMetrica(dmExtension::Params* params)
+static  dmExtension::Result InitializeApp(dmExtension::Params* params)
 {
-    dmLogInfo("Registered extension AppMetrica (null)");
+    dmLogInfo("Registered extension App (null)");
     return dmExtension::RESULT_OK;
 }
 
-static dmExtension::Result FinalizeAppMetrica(dmExtension::Params* params)
+static dmExtension::Result FinalizeApp(dmExtension::Params* params)
 {
     return dmExtension::RESULT_OK;
 }
 
-DM_DECLARE_EXTENSION(EXTENSION_NAME, LIB_NAME, 0, 0, InitializeAppMetrica, 0, 0, FinalizeAppMetrica)
+DM_DECLARE_EXTENSION(EXTENSION_NAME, LIB_NAME, 0, 0, InitializeApp, 0, 0, FinalizeApp)
 
 #endif // Android
