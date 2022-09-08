@@ -32,7 +32,7 @@ public class AppMetricaJNI {
     activity.runOnUiThread(new Runnable() {
       @Override
       public void run() {
-        sendSimpleMessage(1, "init", "ok");
+        sendSimpleMessage(1, "init", "ok:"+unitId);
       }
     });
 
