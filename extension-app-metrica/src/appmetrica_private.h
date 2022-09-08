@@ -6,7 +6,7 @@ namespace dmAppMetrica {
 
 void Initialize_Ext();
 
-void Initialize();
+void Initialize(const char* unitId);
 
 void ActivateApp();
 

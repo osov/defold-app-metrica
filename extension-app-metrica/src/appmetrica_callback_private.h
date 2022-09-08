@@ -16,7 +16,7 @@ enum MessageId
 
 enum MessageEvent
 {
-	EVENT_NOT_SUPPORTED = 100
+	EVENT_NOT_SUPPORTED = 100,
     EVENT_ONE = 1
 };
 
