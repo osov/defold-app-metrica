@@ -11,7 +11,7 @@ namespace dmApp {
 
 enum MessageId
 {
-    MSG_TYPE_1 = 1
+    MSG_TYPE_NONE = 1
 };
 
 enum MessageEvent

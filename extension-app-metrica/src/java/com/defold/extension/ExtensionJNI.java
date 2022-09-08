@@ -21,6 +21,7 @@ public class ExtensionJNI {
 
   private static final String TAG = "ExtensionJNI";
   public static native void AddToQueue(int msg, String json);
+  private static final int MSG_TYPE_NONE = 1;
   private static final int EVENT_JSON_ERROR = 101;
   private Activity activity;
 
@@ -33,7 +34,7 @@ public class ExtensionJNI {
     activity.runOnUiThread(new Runnable() {
       @Override
       public void run() {
-        sendSimpleMessage(1, "init", "ok:"+unitId);
+        sendSimpleMessage(MSG_TYPE_NONE, "init", "okay:"+unitId);
       }
     });
 
