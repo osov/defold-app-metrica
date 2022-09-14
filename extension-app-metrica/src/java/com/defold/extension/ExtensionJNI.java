@@ -17,6 +17,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
 
+import com.yandex.metrica.YandexMetrica;
+import com.yandex.metrica.YandexMetricaConfig;
+
 public class ExtensionJNI {
 
   private static final String TAG = "ExtensionJNI";
@@ -32,11 +35,16 @@ public class ExtensionJNI {
     this.activity = activity;
   }
 
-  public void initialize(final String unitId) {
+  public void initialize(final String key) {
     activity.runOnUiThread(new Runnable() {
       @Override
       public void run() {
-        sendSimpleMessage(MSG_TYPE_NONE, "init", "okay:"+unitId);
+        YandexMetricaConfig config = YandexMetricaConfig.newConfigBuilder(key).build();
+				// Initializing the AppMetrica SDK.
+				YandexMetrica.activate(activity.getApplicationContext(), config);
+				// Automatic tracking of user activity.
+				YandexMetrica.enableActivityAutoTracking(activity.getApplication());
+        sendSimpleMessage(MSG_TYPE_NONE, "init", key);
       }
     });
 
@@ -57,11 +65,11 @@ public class ExtensionJNI {
   }
 
 
-  private void sendSimpleMessage(int msg, String key_2, String value_2) {
+  private void sendSimpleMessage(int msg, String key, String value) {
     String message = null;
     try {
       JSONObject obj = new JSONObject();
-      obj.put(key_2, value_2);
+      obj.put(key, value);
       message = obj.toString();
     } catch (JSONException e) {
       message = getJsonConversionErrorMessage(e.getLocalizedMessage());
