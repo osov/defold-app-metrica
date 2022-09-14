@@ -31,8 +31,8 @@ public class ExtensionJNI {
   private Activity activity;
 
 
-  public ExtensionJNI(Activity activity) {
-    this.activity = activity;
+  public ExtensionJNI(Activity mainActivity) {
+    activity = mainActivity;
   }
 
   public void initialize(final String key) {
