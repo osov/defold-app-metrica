@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 	
-	JNIEXPORT void JNICALL Java_com_defold_extension_ExtensionJNI_AddToQueue
+	JNIEXPORT void JNICALL Java_com_defold_extension_ExtensionAppMetrica_AddToQueue
 		(JNIEnv *, jclass, jint, jstring);
 
 #ifdef __cplusplus

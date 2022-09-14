@@ -20,9 +20,9 @@ import org.json.JSONException;
 import com.yandex.metrica.YandexMetrica;
 import com.yandex.metrica.YandexMetricaConfig;
 
-public class ExtensionJNI {
+public class ExtensionAppMetrica {
 
-  private static final String TAG = "ExtensionJNI";
+  private static final String TAG = "ExtensionAppMetrica";
   public static native void AddToQueue(int msg, String json);
   private static final int MSG_TYPE_NONE = 1;
 
@@ -31,7 +31,7 @@ public class ExtensionJNI {
   private Activity activity;
 
 
-  public ExtensionJNI(Activity mainActivity) {
+  public ExtensionAppMetrica(Activity mainActivity) {
     activity = mainActivity;
   }
 
@@ -39,6 +39,7 @@ public class ExtensionJNI {
     activity.runOnUiThread(new Runnable() {
       @Override
       public void run() {
+        Log.d(TAG, "initialize");
         YandexMetricaConfig config = YandexMetricaConfig.newConfigBuilder(key).build();
 				// Initializing the AppMetrica SDK.
 				YandexMetrica.activate(activity.getApplicationContext(), config);

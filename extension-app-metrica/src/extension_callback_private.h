@@ -4,7 +4,7 @@
 #include "extension_private.h"
 #include <dmsdk/sdk.h>
 
-namespace dmApp {
+namespace dmAppMetrica {
 
 // The same events and messages are in ExtensionJNI.java
 // If you change enums here, pls nake sure you update the constants there as well
@@ -34,6 +34,6 @@ void FinalizeCallback();
 
 void AddToQueueCallback(MessageId type, const char*json);
 
-} //namespace
+}
 
 #endif

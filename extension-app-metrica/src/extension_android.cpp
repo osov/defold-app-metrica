@@ -2,17 +2,17 @@
 
 #include <dmsdk/dlib/android.h>
 #include "extension_private.h"
-#include "com_defold_extension_ExtensionJNI.h"
+#include "com_defold_extension_ExtensionAppMetrica.h"
 #include "extension_callback_private.h"
 
-JNIEXPORT void JNICALL Java_com_defold_extension_ExtensionJNI_AddToQueue(JNIEnv * env, jclass cls, jint jmsg, jstring jjson)
+JNIEXPORT void JNICALL Java_com_defold_extension_ExtensionAppMetrica_AddToQueue(JNIEnv * env, jclass cls, jint jmsg, jstring jjson)
 {
     const char* json = env->GetStringUTFChars(jjson, 0);
-    dmApp::AddToQueueCallback((dmApp::MessageId)jmsg, json);
+    dmAppMetrica::AddToQueueCallback((dmAppMetrica::MessageId)jmsg, json);
     env->ReleaseStringUTFChars(jjson, json);
 }
 
-namespace dmApp {
+namespace dmAppMetrica {
 
 struct App
 {
@@ -105,6 +105,6 @@ void ActivateApp()
     //
 }
 
-}//namespace dmApp
+}
 
 #endif

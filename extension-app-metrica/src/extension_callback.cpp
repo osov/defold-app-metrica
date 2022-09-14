@@ -4,7 +4,7 @@
 #include "utils/LuaUtils.h"
 #include <stdlib.h>
 
-namespace dmApp {
+namespace dmAppMetrica {
 
 static dmScript::LuaCallbackInfo* m_luaCallback = 0x0;
 static dmArray<CallbackData> m_callbacksQueue;

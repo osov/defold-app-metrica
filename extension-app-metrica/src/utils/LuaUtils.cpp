@@ -30,4 +30,4 @@ void luaL_push_pair_str_str(lua_State *L, const char *key, const char *value)
     lua_settable(L, -3);
 }
 
-}//namespace dmAppMetrica
+}
