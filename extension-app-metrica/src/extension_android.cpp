@@ -86,7 +86,7 @@ void Initialize_Ext()
 {
     dmAndroid::ThreadAttacher threadAttacher;
     JNIEnv* env = threadAttacher.GetEnv();
-    jclass cls = dmAndroid::LoadClass(env, "com.defold.extension.ExtensionJNI");
+    jclass cls = dmAndroid::LoadClass(env, "com.defold.extension.ExtensionAppMetrica");
 
     InitJNIMethods(env, cls);
 
