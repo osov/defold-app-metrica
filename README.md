@@ -21,7 +21,7 @@ ATTENTION! Currently only Android SDK is supported! No iOs support in current im
 You can use AppMetrica in your own project by adding this project as a [Defold library dependency](http://www.defold.com/manuals/libraries/).
 
 Open your `game.project` file and in the dependencies field under project add:
->https://github.com/osov/defold-yandex-metrica/archive/master.zip
+>https://github.com/osov/defold-app-metrica/archive/master.zip
 ### 2. Get API KEY
 Create an app and get API Key
 [AppMetrica](https://appmetrica.yandex.ru/docs/mobile-sdk-dg/android/about/android-initialize.html)
