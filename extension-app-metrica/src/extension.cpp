@@ -19,7 +19,7 @@ static int Lua_Initialize(lua_State* L)
     if (lua_type(L, 1) != LUA_TSTRING) {
         char msg[256];
         snprintf(msg, sizeof(msg), "Expected string, got %s. Wrong type for Initialize UnitId variable '%s'.", luaL_typename(L, 1), lua_tostring(L, 1));
-        luaL_error(L, msg);
+        luaL_error(L, "%s", msg);
         return 0;
     }
     const char* unitId_lua = luaL_checkstring(L, 1);
@@ -107,7 +107,7 @@ DM_DECLARE_EXTENSION(EXTENSION_NAME, LIB_NAME, dmAppMetrica::AppInitializeApp, d
 
 static  dmExtension::Result InitializeApp(dmExtension::Params* params)
 {
-    dmLogInfo("Registered extension App (null)");
+    dmLogInfo("Registered extension AppMetrica (null)");
     return dmExtension::RESULT_OK;
 }
 
