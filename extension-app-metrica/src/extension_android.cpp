@@ -16,10 +16,9 @@ namespace dmAppMetrica {
 
 struct App
 {
-    jobject        m_AppJNI;
-
-    jmethodID      m_Initialize;
-
+    jobject    m_AppJNI;
+    jmethodID  m_Initialize;
+    jmethodID  m_ReportEvent;
 };
 
 static App       g_app;
@@ -61,6 +60,19 @@ static void CallVoidMethodCharInt(jobject instance, jmethodID method, const char
     env->DeleteLocalRef(jstr);
 }
 
+static void CallVoidMethodCharChar(jobject instance, jmethodID method, const char* cstr1, const char* cstr2)
+{
+    dmAndroid::ThreadAttacher threadAttacher;
+    JNIEnv* env = threadAttacher.GetEnv();
+
+    jstring jstr1 = env->NewStringUTF(cstr1);
+    jstring jstr2 = env->NewStringUTF(cstr2);
+    env->CallVoidMethod(instance, method, jstr1, jstr2);
+    env->DeleteLocalRef(jstr1);
+    env->DeleteLocalRef(jstr2);
+}
+
+
 static void CallVoidMethodInt(jobject instance, jmethodID method, int cint)
 {
     dmAndroid::ThreadAttacher threadAttacher;
@@ -80,6 +92,7 @@ static void CallVoidMethodBool(jobject instance, jmethodID method, bool cbool)
 static void InitJNIMethods(JNIEnv* env, jclass cls)
 {
     g_app.m_Initialize = env->GetMethodID(cls, "initialize", "(Ljava/lang/String;)V");
+    g_app.m_ReportEvent = env->GetMethodID(cls, "ReportEvent", "(Ljava/lang/String;Ljava/lang/String)V");
 }
 
 void Initialize_Ext()
@@ -98,6 +111,11 @@ void Initialize_Ext()
 void Initialize(const char* unitId)
 {
      CallVoidMethodChar(g_app.m_AppJNI, g_app.m_Initialize, unitId);
+}
+
+void ReportEvent(const char *s1, const char *s2)
+{
+    CallVoidMethodCharChar(g_app.m_AppJNI, g_app.m_ReportEvent, s1, s2);
 }
 
 void ActivateApp()

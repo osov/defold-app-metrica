@@ -10,7 +10,7 @@ void Initialize(const char* unitId);
 
 void ActivateApp();
 
-
+void ReportEvent(const char *s1, const char *s2);
 }
 
 #endif

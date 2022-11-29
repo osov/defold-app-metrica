@@ -48,7 +48,20 @@ public class ExtensionAppMetrica {
         sendSimpleMessage(MSG_TYPE_NONE, "init", key);
       }
     });
+  }
 
+  public void ReportEvent(final String event, final String eventParameters) {
+  	activity.runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        Log.d(TAG, "ReportEvent:"+event);
+        Log.d(TAG, "eventParameters:"+eventParameters);
+        if (eventParameters.equals(""))
+        	YandexMetrica.reportEvent(event);
+        else
+        	YandexMetrica.reportEvent(event, eventParameters);
+      }
+    });
   }
 
   private String getJsonConversionErrorMessage(String messageText) {
