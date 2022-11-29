@@ -92,7 +92,7 @@ static void CallVoidMethodBool(jobject instance, jmethodID method, bool cbool)
 static void InitJNIMethods(JNIEnv* env, jclass cls)
 {
     g_app.m_Initialize = env->GetMethodID(cls, "initialize", "(Ljava/lang/String;)V");
-    g_app.m_ReportEvent = env->GetMethodID(cls, "ReportEvent", "(Ljava/lang/String;Ljava/lang/String)V");
+    g_app.m_ReportEvent = env->GetMethodID(cls, "ReportEvent", "(Ljava/lang/String;Ljava/lang/String;)V");
 }
 
 void Initialize_Ext()
@@ -113,7 +113,7 @@ void Initialize(const char* unitId)
      CallVoidMethodChar(g_app.m_AppJNI, g_app.m_Initialize, unitId);
 }
 
-void ReportEvent(const char *s1, const char *s2)
+void ReportEvent(const char* s1, const char* s2)
 {
     CallVoidMethodCharChar(g_app.m_AppJNI, g_app.m_ReportEvent, s1, s2);
 }

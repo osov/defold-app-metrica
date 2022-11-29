@@ -51,8 +51,8 @@ static int Lua_ReportEvent(lua_State *L)
         luaL_error(L, "%s", msg);
         return 0;
     }
-    const char *s1 = luaL_checkstring(L, 1);
-    const char *s2 = luaL_checkstring(L, 2);
+    const char* s1 = luaL_checkstring(L, 1);
+    const char* s2 = luaL_checkstring(L, 2);
     ReportEvent(s1, s2);
     return 0;
 }
