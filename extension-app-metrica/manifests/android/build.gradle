@@ -1,3 +1,7 @@
+repositories {
+	mavenCentral()
+}
+
 dependencies {
     implementation 'com.yandex.android:mobmetricalib:5.2.0'
 }
