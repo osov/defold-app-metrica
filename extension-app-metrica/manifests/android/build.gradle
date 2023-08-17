@@ -3,5 +3,5 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.yandex.android:mobmetricalib:5.2.0'
+    implementation 'com.yandex.android:mobmetricalib:5.3.0'
 }

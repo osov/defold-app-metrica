@@ -20,6 +20,13 @@ import org.json.JSONException;
 import com.yandex.metrica.YandexMetrica;
 import com.yandex.metrica.YandexMetricaConfig;
 
+import java.math.BigDecimal;
+import java.util.Currency;
+import java.util.HashMap;
+import java.util.Map;
+import com.yandex.metrica.AdRevenue;
+import com.yandex.metrica.AdType;
+
 public class ExtensionAppMetrica {
 
   private static final String TAG = "ExtensionAppMetrica";
@@ -63,6 +70,30 @@ public class ExtensionAppMetrica {
       }
     });
   }
+
+  public void SendRevenue(final String money, final String network_name, final String ad_unit_id, final String precision, final String ad_type){
+        AdType _ad_type;
+        _ad_type = AdType.NATIVE;
+        if (ad_type.equals("BANNER"))
+            _ad_type = AdType.BANNER;
+        else if (ad_type.equals("REWARDED"))
+            _ad_type = AdType.REWARDED;
+        else if (ad_type.equals("INTERSTITIAL"))
+            _ad_type = AdType.INTERSTITIAL;
+        //передать значение из поля revenue_USD из объекта impressionData и валюту USD
+        AdRevenue adRevenue = AdRevenue.newBuilder(new BigDecimal(money), Currency.getInstance("USD"))
+        //передать значение из поля network.name из объекта impressionData
+        .withAdNetwork(network_name)
+        //задать значение в зависимости от того, какое значение пришло в поле adType
+        .withAdType(_ad_type)
+        //передать значение из поля ad_unit_id из объекта impressionData
+        .withAdUnitId(ad_unit_id)
+        //передать значение из поля precision из объекта impressionData
+         .withPrecision(precision)
+         .build();
+        YandexMetrica.reportAdRevenue(adRevenue);
+        Log.d(TAG, "sendRevenue:"+adRevenue.toString());
+    }
 
   private String getJsonConversionErrorMessage(String messageText) {
     String message = null;

@@ -19,6 +19,7 @@ struct App
     jobject    m_AppJNI;
     jmethodID  m_Initialize;
     jmethodID  m_ReportEvent;
+    jmethodID  m_SendRevenue;
 };
 
 static App       g_app;
@@ -72,6 +73,24 @@ static void CallVoidMethodCharChar(jobject instance, jmethodID method, const cha
     env->DeleteLocalRef(jstr2);
 }
 
+static void CallVoidMethodCharCharCharCharChar(jobject instance, jmethodID method, const char* cstr1, const char* cstr2, const char* cstr3, const char* cstr4, const char* cstr5)
+{
+    dmAndroid::ThreadAttacher threadAttacher;
+    JNIEnv* env = threadAttacher.GetEnv();
+
+    jstring jstr1 = env->NewStringUTF(cstr1);
+    jstring jstr2 = env->NewStringUTF(cstr2);
+    jstring jstr3 = env->NewStringUTF(cstr3);
+    jstring jstr4 = env->NewStringUTF(cstr4);
+    jstring jstr5 = env->NewStringUTF(cstr5);
+    env->CallVoidMethod(instance, method, jstr1, jstr2, jstr3, jstr4, jstr5);
+    env->DeleteLocalRef(jstr1);
+    env->DeleteLocalRef(jstr2);
+    env->DeleteLocalRef(jstr3);
+    env->DeleteLocalRef(jstr4);
+    env->DeleteLocalRef(jstr5);
+}
+
 
 static void CallVoidMethodInt(jobject instance, jmethodID method, int cint)
 {
@@ -93,6 +112,7 @@ static void InitJNIMethods(JNIEnv* env, jclass cls)
 {
     g_app.m_Initialize = env->GetMethodID(cls, "initialize", "(Ljava/lang/String;)V");
     g_app.m_ReportEvent = env->GetMethodID(cls, "ReportEvent", "(Ljava/lang/String;Ljava/lang/String;)V");
+    g_app.m_SendRevenue = env->GetMethodID(cls, "SendRevenue", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V");
 }
 
 void Initialize_Ext()
@@ -116,6 +136,11 @@ void Initialize(const char* unitId)
 void ReportEvent(const char* s1, const char* s2)
 {
     CallVoidMethodCharChar(g_app.m_AppJNI, g_app.m_ReportEvent, s1, s2);
+}
+
+void SendRevenue(const char* s1, const char* s2, const char* s3, const char* s4, const char* s5)
+{
+    CallVoidMethodCharCharCharCharChar(g_app.m_AppJNI, g_app.m_SendRevenue, s1, s2, s3, s4, s5);
 }
 
 void ActivateApp()
