@@ -92,7 +92,7 @@ public class ExtensionAppMetrica {
          .withPrecision(precision)
          .build();
         YandexMetrica.reportAdRevenue(adRevenue);
-        Log.d(TAG, "sendRevenue:"+adRevenue.toString());
+        Log.d(TAG, "sendRevenue:"+money+"/"+network_name+"/"+ad_unit_id+"/"+precision+"/"+ad_type+"-"+_ad_type);
     }
 
   private String getJsonConversionErrorMessage(String messageText) {
