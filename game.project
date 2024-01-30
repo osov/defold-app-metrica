@@ -6,7 +6,7 @@ version = 1.0
 main_collection = /main/main.collectionc
 
 [input]
-game_binding = /input/game.input_bindingc
+game_binding = /builtins/input/all.input_bindingc
 
 [display]
 width = 720
@@ -23,7 +23,6 @@ package = com.app.metrica
 immersive_mode = 1
 display_cutout = 0
 
-
-
 [library]
 include_dirs = extension-app-metrica
+
