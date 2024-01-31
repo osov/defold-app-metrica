@@ -2,7 +2,7 @@
 
 _“This plugin is not endorsed or sponsored by Yandex LLC. This is an independent, unofficial plugin. “_
 
-[Yandex.Metrica(AppMetrica)](https://appmetrica.yandex.ru/) is a free of charge app analytics tool for Android(only).
+[Yandex.Metrica(AppMetrica)](https://appmetrica.yandex.ru/) is a free of charge app analytics tool for Android and iOS.
 
 This native extension doesn't implement all Yandex.Metrica functions, but they are enough to track most of the stats of your game.
 
@@ -24,8 +24,8 @@ In your `main.script` call `init` to start monitoring. It means, for the AppMetr
 ```lua
 
 function init(self)
-  appmetrica.set_callback(function() 
-     print("app metrica initialized") 
+  appmetrica.set_callback(function()
+     print("app metrica initialized")
   end)
   appmetrica.initialize(YOUR_KEY)
 end

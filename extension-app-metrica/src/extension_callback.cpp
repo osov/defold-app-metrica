@@ -1,4 +1,4 @@
-#if defined(DM_PLATFORM_ANDROID) 
+#if defined(DM_PLATFORM_ANDROID) || defined(DM_PLATFORM_IOS)
 
 #include "extension_callback_private.h"
 #include "utils/LuaUtils.h"
@@ -97,7 +97,7 @@ void UpdateCallback()
         DM_MUTEX_SCOPED_LOCK(m_mutex);
         tmp.Swap(m_callbacksQueue);
     }
-    
+
     for(uint32_t i = 0; i != tmp.Size(); ++i)
     {
         CallbackData* data = &tmp[i];

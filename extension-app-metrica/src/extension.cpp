@@ -5,7 +5,7 @@
 #define DLIB_LOG_DOMAIN LIB_NAME
 #include <dmsdk/sdk.h>
 
-#if defined(DM_PLATFORM_ANDROID)
+#if defined(DM_PLATFORM_ANDROID) || defined(DM_PLATFORM_IOS)
 
 #include "extension_private.h"
 #include "extension_callback_private.h"
@@ -24,7 +24,7 @@ static int Lua_Initialize(lua_State* L)
     }
     const char* unitId_lua = luaL_checkstring(L, 1);
     Initialize(unitId_lua);
-    return 0; 
+    return 0;
 }
 
 static int Lua_SetCallback(lua_State* L)

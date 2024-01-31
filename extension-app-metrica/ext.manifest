@@ -4,3 +4,9 @@ platforms:
     android:
         context:
             aaptExtraPackages: ['com.yandex.android.mobmetricalib']
+    arm64-ios:
+        context:
+            linkFlags:  ["-ObjC"]
+    armv7-ios:
+        context:
+            linkFlags:  ["-ObjC"]
