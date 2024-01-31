@@ -26,6 +26,8 @@ namespace dmAppMetrica {
 	}
 }
 
+#define ExtensionInterface Extension_appmetrica_Interface
+
 @interface ExtensionInterface : NSObject
 @end
 
