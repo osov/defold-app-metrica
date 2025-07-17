@@ -47,7 +47,7 @@ namespace dmAppMetrica {
 	} else {
 		NSData *data = [eventParameters dataUsingEncoding:NSUTF8StringEncoding];
 		NSError *err = nil;
-		NSDictionary *params = [NSJSONSerialization JSONObjectWithData:data options:nil error:&err];
+		NSDictionary *params = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
 		if (!err) {
 			[YMMYandexMetrica reportEvent:event parameters:params onFailure:nil];
 		}
